@@ -1,6 +1,7 @@
 package com.spring.task9.controller;
 
 import com.spring.task9.DTO.CourseDTO;
+import com.spring.task9.entity.Course;
 import com.spring.task9.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,5 +33,11 @@ public class CourseController {
     private ResponseEntity<String> deleteCourse(@RequestParam Long id){
         courseService.deleteCourseById(id);
         return new ResponseEntity<>("Deleted!", HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    private ResponseEntity<Course> getCourseById(@PathVariable Long id){
+        Course course = courseService.getCourseById(id);
+        return new ResponseEntity<>(course, HttpStatus.OK);
     }
 }

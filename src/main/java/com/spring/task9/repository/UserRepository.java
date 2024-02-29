@@ -4,10 +4,12 @@ import com.spring.task9.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    String findByUsername(String name);
+    Optional<User> findByUsername(String name);
 
-    String findByEmail(String email);
+    Optional<User> findByEmail(String email);
 }
