@@ -5,11 +5,13 @@ import com.spring.task9.entity.Course;
 import com.spring.task9.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class CourseService {
 
@@ -44,6 +46,11 @@ public class CourseService {
 
     public void deleteCourseById(Long id){
         courseRepository.deleteById(id);
+    }
+
+    public Course getCourseById(Long id){
+        Course course = courseRepository.findById(id).get();
+        return course;
     }
 
 }
